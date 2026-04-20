@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="card card-custom p-4">
+
+    <h3>✏️ Talabani tahrirlash</h3>
+    <hr>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            {% for field in form %}
+            <div class="col-md-6 mb-3">
+                <label>{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <button class="btn btn-warning w-100">Saqlash</button>
+    </form>
+
+</div>
+
+{% endblock %}

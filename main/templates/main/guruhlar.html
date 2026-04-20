@@ -1,0 +1,51 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h2>👥 Guruhlar</h2>
+
+    <!-- ✔ TO‘G‘RI URL -->
+    <a href="{% url 'main:guruh_add' %}" class="btn btn-primary">
+        + Qo‘shish
+    </a>
+</div>
+
+<div class="row">
+
+    {% for guruh in guruhlar %}
+    <div class="col-md-4 mb-3">
+
+        <div class="card card-custom p-3">
+
+            <h5>📚 {{ guruh.nomi }}</h5>
+            <p>{{ guruh.tavsif }}</p>
+
+            <span class="badge bg-dark">
+                👨‍🎓 {{ guruh.talabalar_soni }} ta talaba
+            </span>
+
+            <div class="mt-3">
+
+                <!-- ✔ TO‘G‘RI EDIT -->
+                <a href="{% url 'main:guruh_edit' guruh.pk %}"
+                   class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <!-- ✔ TO‘G‘RI DELETE -->
+                <a href="{% url 'main:guruh_delete' guruh.pk %}"
+                   class="btn btn-danger btn-sm">
+                    Delete
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

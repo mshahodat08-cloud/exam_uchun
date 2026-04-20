@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card card-custom p-4 text-center">
+
+        <h2>❌ O‘chirishni tasdiqlang</h2>
+
+        <hr>
+
+        <h4>👥 {{ guruh.nomi }}</h4>
+
+        <p class="text-muted">
+            Bu guruhni o‘chirsangiz, unga tegishli ma’lumotlar ham yo‘qoladi.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <a href="{% url 'main:guruhlar' %}" class="btn btn-secondary">
+                ⬅ Bekor qilish
+            </a>
+
+            <button type="submit" class="btn btn-danger">
+                🗑 Ha, o‘chirish
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<style>
+.card-custom {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+</style>
+
+{% endblock %}

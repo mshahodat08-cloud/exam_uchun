@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h2>➕ Talaba formasi</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button class="btn btn-primary">💾 Saqlash</button>
+</form>
+
+{% endblock %}

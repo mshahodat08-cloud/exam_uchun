@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<h2>📋 Talabalar ro‘yxati</h2>
+
+<a href="{% url 'main:add' %}" class="btn btn-success mb-3">➕ Qo‘shish</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ism</th>
+            <th>Familiya</th>
+            <th>Email</th>
+            <th>Amallar</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for t in talabalar %}
+        <tr>
+            <td>{{ t.ism }}</td>
+            <td>{{ t.familiya }}</td>
+            <td>{{ t.email }}</td>
+            <td>
+                <a href="{% url 'main:detail' t.id %}" class="btn btn-info btn-sm">👁</a>
+                <a href="{% url 'main:edit' t.id %}" class="btn btn-warning btn-sm">✏</a>
+                <a href="{% url 'main:delete' t.id %}" class="btn btn-danger btn-sm">🗑</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

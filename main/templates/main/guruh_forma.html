@@ -1,0 +1,166 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="form-header">
+        <h2>👥 Guruh yaratish / tahrirlash</h2>
+        <p>Rasm, nom va tavsif kiriting ✨</p>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="card form-card">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- NOMI -->
+            <div class="form-group">
+                <label>📚 Guruh nomi</label>
+                {{ form.nomi }}
+            </div>
+
+            <!-- TAVSIF -->
+            <div class="form-group">
+                <label>📝 Tavsif</label>
+                {{ form.tavsif }}
+            </div>
+
+            <!-- IMAGE UPLOAD -->
+            <div class="form-group">
+                <label>🖼 Guruh rasmi</label>
+                {{ form.rasm }}
+            </div>
+
+            <!-- OLD IMAGE PREVIEW -->
+            {% if form.instance.rasm %}
+            <div class="preview-box">
+                <p>📸 Hozirgi rasm:</p>
+                <img src="{{ form.instance.rasm.url }}">
+            </div>
+            {% endif %}
+
+            <!-- BUTTON -->
+            <button type="submit" class="btn-save">
+                💾 Saqlash
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- STYLE -->
+<style>
+
+body {
+    background: #f4f6fb;
+}
+
+/* HEADER */
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-header h2 {
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.form-header p {
+    color: #64748b;
+}
+
+/* CARD */
+.form-card {
+    max-width: 600px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: white;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* INPUTS */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Django inputs */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 10px rgba(99,102,241,0.2);
+    outline: none;
+}
+
+/* IMAGE PREVIEW */
+.preview-box {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.preview-box img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #6366f1;
+    transition: 0.3s;
+}
+
+.preview-box img:hover {
+    transform: scale(1.05);
+}
+
+/* BUTTON */
+.btn-save {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #6366f1, #3b82f6);
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(59,130,246,0.3);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+
+{% endblock %}
