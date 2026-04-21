@@ -60,6 +60,7 @@ def talaba_tahrirlash(request, pk):
         form = TalabaForm(instance=talaba)
 
     return render(request, 'main/forma.html', {'form': form})
+
 def talaba_detail(request, pk):
     talaba = get_object_or_404(Talaba, pk=pk)
     return render(request, 'main/detail.html', {'talaba': talaba})
